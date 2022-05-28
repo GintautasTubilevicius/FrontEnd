@@ -1,0 +1,243 @@
+*{
+    box-sizing: border-box;
+}
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.page {
+    height: 100vh;
+    display: grid;
+    font-size: 12px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+}
+.header {
+    display: flex;
+    background-image: url(http://houstonse.org/wp-content/uploads/2020/11/green-Simple-Vector-Geometric-Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 100px;
+    gap:10px;
+}
+h1 {
+    color: white;
+    font-size: 30px;
+    font-weight: 900;
+}
+.stripe {
+    background-color: white;
+    display: inline-block;
+    width: 70px;
+    height: 4px;
+    margin-bottom: 7px;
+}
+h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+header p {
+    text-align: center;
+    padding-bottom: 20px;
+}
+button{
+    text-align: center;
+    padding: 8px;
+    width: 120px;
+    font-size: 12px;
+    border-radius: 80px;
+    border: none;
+    font-weight: 700;
+    background-color:orangered;
+    color: white;
+}
+.discover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.discover-text{
+    text-align: center;
+    padding: 20px;
+}
+h3 {
+    font-size: 20px;
+}
+h3 span {
+    font-weight: 900;
+}
+.discover-text p{
+    font-size: 10px;
+    padding-top: 10px;
+}
+.discover-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.discover-box {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 20px 10px;
+}
+.discover-box-bold {
+    font-weight: 600;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+.icon-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.discover-box i {
+    border-radius: 60px;
+    height: 60px;
+    width: 60px;
+    padding: 10px;
+    border: 2px solid grey;
+    text-align: center;
+    background-color: rgb(252, 246, 246);
+}
+.lorem-boxes {
+    background-color: orangered;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    color: white;
+}
+.lorem-box {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    border: 1px solid rgb(218, 68, 13);
+    padding: 20px 10px 20px 30px;
+}
+.lorem-box-bold {
+    font-weight: 600;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+footer{
+    background-color: grey;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 50px;
+    gap: 10px;
+}
+.footer-nav {
+    display: flex;
+    gap: 5px;
+}
+.copyright {
+    display: inline-block;
+}
+.info {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    padding: 40px 100px 40px 100px;
+}
+.info-text p span {
+    color: orangered;
+}
+.author {
+    padding-top: 10px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.home{
+    color: green;
+}
+@media (max-width: 678px){
+    .footer-copyright {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    .copyright {
+        display: block;
+    }
+    .footer {
+        padding: 30px 30px;
+    }
+    .info{
+        padding: 40px 40px;
+    }
+    .footer-copyright a {
+        display: inline-block;
+    }
+}
+@media (max-width: 580px) {
+    .header {
+        padding: 20px 40px;
+    }
+}
+@media (max-width: 460px) {
+
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 17px;
+    }
+    h3 {
+        font-size: 17px;
+    }
+    .discover-boxes {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .lorem-boxes {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .lorem-box {
+        padding: 20px 30px;
+    }
+    .info {
+        padding: 20px 20px;
+    }
+    button{
+        text-align: center;
+        padding: 6px;
+        width: 120px;
+        font-size: 10px; 
+    }
+    .stripe {
+        width: 50px;
+        height: 2px;
+        margin-bottom: 5px;
+    }
+    footer{
+        padding: 30px 30px;
+        flex-direction: column;
+    }
+}
+@media (max-width: 360px) {
+    h1 {
+        font-size: 19px;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    .footer {
+        padding: 30px 10px;
+    }
+    .header {
+        padding: 20px 10px;
+    }
+}

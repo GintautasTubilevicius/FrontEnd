@@ -1,0 +1,53 @@
+{{!-- <h1>Jusu banko saskaita</h1>
+<form action="/transfer">
+<label for=""> Saskaitos numeris</label>
+<input type="text" name="saskaita">
+<label for=""> Gavejo vardas ir pavarde</label>
+<input type="text" name="vardas">
+<label for=""> Mokejimo paskirtis</label>
+<input type="text" name="paskirtis">
+    <button type="submit">Siusti</button>
+</form> 
+
+{{#if patvirtinti}}
+<div class="alert alert-success d-flex align-items-center" role="alert" style="margin: 0px 300px 0px 300px">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+  <div>
+    {{patvirtinti}}
+  </div>
+</div>
+
+{{else}}
+
+{{/if}}
+
+{{#if atmesti}}
+<div class="alert alert-danger d-flex align-items-center" role="alert" style="margin: 0px 300px 0px 300px">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <div>
+    {{atmesti}}
+  </div>
+</div>
+
+{{else}}
+
+
+{{/if}} --}}
+
+{{#if message}}
+    <div class="alert alert-{{status}}" role="alert">
+        {{message}}
+    </div>
+{{/if}}
+
+<h2>Naujas pavedimas</h2>
+
+<form action="/transfer">
+<label>Saskaitos nr</label>
+<input type="text" name="account_number">
+<label>Vardas ir pavarde</label>
+<input type="text" name="recipient">
+<label>Mokejimo paskirtis</label>
+<input type="text" name="reference">
+<button type="submit">Parvesti</button>
+</form>

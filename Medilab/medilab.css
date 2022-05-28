@@ -1,0 +1,238 @@
+body, html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 98vw;
+}
+#banner{
+    background: url(./bg-banner.jpg) no-repeat fixed;
+    background-size: cover;
+    min-height: 650px;
+    position: relative;
+    width: 100%;
+}
+.background {
+    background-color: RGBA(13, 70, 83, 0.78);
+    min-height: 650px;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+.navbar {
+    width: 100%;
+    position: sticky;
+    /* border-radius: 0px; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* padding-left: 90px;
+    padding-right: 90px; */
+}
+nav {
+    position: sticky;
+}
+.nav-logo {
+    padding-top: 20px;
+}
+.menu-container-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    /* align-items: end; */
+    /* margin: 0; */
+    font-size: 14px;
+    gap: 3em;
+    margin-top: 1em;
+    /* margin-right: 4em; */
+    text-transform: uppercase ;
+}
+svg{
+    fill: #f3ecec;
+    border: 3px solid #ffffffb2;
+    border-radius: 5px;
+    padding: 3px;
+}
+.burger-container {
+    padding-top: 20px;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+.topLogo{
+    height: 50px;
+}
+
+.big-text {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+}
+.big-text-center {
+    font-size: 35px;
+    text-transform: uppercase;
+    padding: 15px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.link-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 12px;
+    background-color: rgba(12, 184, 182, 0.91);
+    border-radius: 3px;
+    color: #fff;
+}
+
+p {
+    text-align: center;
+    display: block;
+    margin-bottom: 30px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+h2{
+    line-height: 20px;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: black;
+}
+
+.services{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 20px;
+    color: #999999;
+    font-size: 16px;
+    padding: 50px;
+    gap: 20px;
+}
+
+.description{
+    text-align: left;
+}
+h3:not(.emergency-case *){
+    color: black;
+}
+
+i {
+    color: #0cb8b6;
+    font-size: 45px;
+    margin-bottom: 25px;
+}
+
+hr{
+    height: 3px;
+    width: 60px;
+    background: #ffb737;
+    position: relative;
+    border: 0;
+    margin: 20px 0 20px 0;
+}
+
+.emergency-case {
+    padding: 20px;
+    background-color: #0CB8B6;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: #fff;
+    margin-right: 50px;
+    margin-left: 50px;
+    /* gap: 1px; */
+}
+
+.emergency-block{
+    width: 400px;
+    text-align: left;
+    padding: 30px;
+}
+
+.emergency-description {
+    text-align: left;
+}
+
+.read-more-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 12px;
+    color: #fff;
+    border:2px solid white;
+    text-transform: uppercase;
+}
+
+td {
+    border: 0px solid #ededed;
+    border-top: 1px solid rgba(216, 216, 216, 0.5);
+    padding: 6px 10px 6px 0;
+}
+table {
+    border: 1px solid white;
+}
+@media (min-width: 768px){
+    .burger-container{
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .emergency-case {
+        flex-direction: column;
+    }
+    .services {
+        flex-direction: column;
+    }
+    .emergency-block {
+        width: fit-content;
+    }
+    .menu-container-list {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 380px;
+        border-top: 1px solid white;
+        padding: 20px;
+        display: none;
+
+
+    }
+    svg:hover {
+        background-color: rgb(228, 218, 218);
+        fill: grey;
+    }
+    .navbar {
+        position: relative;
+    }
+    .menu-container-list{
+        position: absolute;
+    }
+    .menu-container-list .burger-container svg:focus .menu-container-list {
+        display: block;
+    }
+    
+}
+@media (max-width: 550px){
+    .big-text-center {
+        font-size: 24px;
+    }
+}
+/* 
+.navbar-default {
+    background-color: transparent;
+    border: 0px;
+}
+.navbar-default {
+    background-color: #fff;
+    padding: 20px 0;
+    transition: all 0.3s;
+} */

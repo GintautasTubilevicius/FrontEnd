@@ -1,0 +1,17 @@
+{{!-- <h3>Ar pavedimo duomenys yra teisingi?</h3>
+<form action="/account">
+<p>Saskaitos numeris: <span class="fw-bold">{{saskaita}}</span></p>
+<p>Gavejo vardas ir pavarde: <span class="fw-bold">{{vardas}}</span></p>
+<p>Mokejimo paskirtis: <span class="fw-bold">{{paskirtis}}</span></p>
+<button type="submit" name="patvirtinti">Patvirtinti</button>
+<button type="submit" name="atmesti">Atmesti</button>
+</form> --}}
+<h1>Ar pavedimo duomenys yra teisingi?</h1>
+<ul>
+    <li>Saskaitos numeris: {{number}}</li>
+    <li>Vardas ir pavarde: {{recipient}}</li>
+    <li>Paskirtis: {{reference}}</li>
+</ul>
+
+<a class="btn btn-primary" href="/account?message=Pavedimas sekmingai ivykdytas&status=success">Patvirtinti</a>
+<a class="btn btn-primary" href="/account?message=Pavedimas atmestas&status=danger">Atmesti</a>

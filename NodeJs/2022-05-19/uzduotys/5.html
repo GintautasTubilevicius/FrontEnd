@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penkta užduotis</title>
+    <style>
+        .soka {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: blue;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const random = (min, max) => {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        const newDiv = document.createElement("div");
+        document.body.appendChild(newDiv);
+        newDiv.classList.add('soka');
+        const width = window.innerWidth 
+        const height = window.innerHeight
+
+
+        let i = 1;
+        while (i < 30) {
+            task(i);
+            i++;
+            
+        }
+
+        function task(i) {
+            setTimeout(function () {
+                const div = document.querySelector('div');
+                top1 = random(1, width - 50)
+                left1 = random(1, height - 50)
+                newDiv.style.top = `${top1}px`
+                newDiv.style.left = `${left1}px`
+                let rezultatas = i - paspaudimai
+                if (i < 30) console.log('vyksta')
+                else console.log('zaidimas baigtas')
+                // console.log(i)
+                // console.log(paspaudimai)
+                
+            }, 1000 * i)
+
+        }
+        let blokas = document.querySelector('div')
+        let paspaudimai = 0
+        blokas.addEventListener('click', function () {
+            paspaudimai += 1
+            console.log(paspaudimai)
+            
+        })
+
+        // if (i = 30) {
+        //     console.log('zaidimas baigesi')
+        //     // const template = document.createElement('p');
+        //     // template.innerHTML = "Laimejo kompiuteris";
+
+        //     // document.body.appendChild(template);
+
+        // }
+
+
+    </script>
+</body>
+
+</html>

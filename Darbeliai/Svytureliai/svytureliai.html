@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .svytureliai{
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, red, blue);
+            transition: 2s;
+        }
+        .main{
+            width: 50%;
+            height: 50%;
+            overflow: hidden;
+        }
+        .main:hover .svytureliai{
+            transform: scale(2) rotate(360deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="svytureliai">
+        </div>
+    </div>      
+</body>
+</html>

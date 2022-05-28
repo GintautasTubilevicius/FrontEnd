@@ -1,0 +1,29 @@
+<h1>Nuotraukų galerija</h1>
+<form action="/submit-image" method="POST" enctype="multipart/form-data">
+    <div class="nuotraukos">
+        <div class="row g-3">
+            <label for="formFile" class="form-label">Pirma nuotrauka:</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="file" id="formFile" name="photo">
+            </div>
+            <label for="formFile" class="form-label">Antra nuotrauka:</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="file" id="formFile" name="photo">
+            </div>
+            <div class="col-sm">
+                <button type="submit" class="btn btn-success">Siųsti</button>
+            </div>
+            
+        </div>
+    </div>
+
+</form>
+
+<div>
+     <button class="btn btn-success addPhotoButton">Pridėti nuotrauką</button>
+</div>
+
+{{#each db}}
+    <img src="/photos/{{this}}" alt="" class="img"> 
+    <button class="delete">X</button>
+{{/each}}

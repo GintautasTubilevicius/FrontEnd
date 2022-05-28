@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+}
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: Brush Script MT;
+}
+.layout{
+    background-image: url(https://data.1freewallpapers.com/download/starry-sky-stars-dots-black-2048x1536.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    /* width: 100vw; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px auto 250px;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+.header{
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    align-items: center;
+    text-align: center;
+    padding-left: 30px;
+}
+.nav-meniu{
+    color: white;
+    text-align: center;
+    word-spacing: 20px;
+}
+.main{
+    margin-top: 60px;
+    height: 100%;
+    grid-area: main;
+    text-align: center;
+}
+h1{
+    font-size: 60px;
+    color: white;
+    font-weight: 900;
+    padding-bottom: 20px;
+}
+h3{
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+p {
+    font-size: 14px;
+    color: grey;
+}
+.buttons {
+    padding-top: 20px;
+}
+.linkButtonContainer1{
+    background-color: green;
+    color:  #325b4c;
+    border-radius: 3px;
+    border: none;
+    padding: 20px 60px;
+}
+.main p {
+    padding-bottom: 30px;
+    color:white;
+    font-size: 20px;
+}
+a{
+    padding-top: 10px;
+    text-decoration: none;
+    color: white;
+}
+.success{
+    color: green;
+}
+.linkButtonContainer2 {
+    margin-left: 10px;
+    background-color: white;
+    color:  #325b4c;
+    border-radius: 3px;
+    border: none;
+    padding: 20px 60px;
+}
+.linkButtonContainer2 a {
+    color: grey;
+}
+.footer {
+    background-color: white;
+    color: lightgrey;
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: white;
+    align-content: center;
+    text-align: center;
+    gap: 50px;
+    padding: 0 30px;
+}
+.block {
+    color: grey;
+    width: 100%;
+}
+i {
+    background-color: green;
+    padding: 10px;
+    margin-bottom: 30px;
+    font-size: 48px;
+    color:white;
+}
+svg{
+    fill: #f3ecec;
+    border: 3px solid #ffffffb2;
+    border-radius: 5px;
+    padding: 3px;
+}
+.burger-container{
+    display: none;
+}
+@media (max-width: 1200px){
+    .nav-meniu {
+        word-spacing: 10px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 992px){
+    .layout{
+        grid-template-rows: 150px auto 370px;
+    }
+    .footer{
+        padding-top: 30px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .main{
+        margin-top: 10px;
+    }
+    .nav-meniu {
+        display:none;
+        }
+    .burger-container{
+        display: block;
+        text-align: end;
+        margin-right: 50px;
+    }
+}
+@media (max-width: 668px){
+    h1 {
+        font-size: 40px;
+    }
+    .linkButtonContainer2{
+        padding: 15px 40px;
+    }
+    .linkButtonContainer1{
+        padding: 15px 40px;
+    }
+    .main p {
+        font-size: 18px;
+    }
+}
+@media (max-width: 570px){
+    h1 {
+        font-size: 30px;
+    }
+    .main p {
+        font-size: 14px;
+    }
+    .linkButtonContainer2{
+        padding: 10px 30px;
+    }
+    .linkButtonContainer1{
+        padding: 10px 30px;
+    }
+}
+@media (max-width: 500px){
+    
+}
+@media (max-width: 468px){
+    .main p {
+        font-size: 16px;
+    }
+    .layout{
+        grid-template-rows: 100px auto 400px;
+    }
+    .footer{
+        gap: 10px;
+    }
+}
+@media (max-width: 360px){
+    .main p{
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 25px;
+    }
+    .footer{
+        margin-top: 30px;
+        padding: 20px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .layout{
+        grid-template-rows: 100px auto 650px;
+    }
+    .main{
+        margin-top: 0px;
+    }
+    p{
+        font-size: 13px;
+    }
+    .linkButtonContainer2{
+        padding: 8px 25px;
+    }
+    .linkButtonContainer1{
+        padding: 8px 25px;
+    }
+}

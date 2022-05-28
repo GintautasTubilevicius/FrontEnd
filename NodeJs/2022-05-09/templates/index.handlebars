@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+<div>
+<form>
+    <input type="checkbox" name="kodas" value="1"> 1
+    <input type="checkbox" name="kodas" value="2"> 2
+    <input type="checkbox" name="kodas" value="3"> 3 </br>
+    <input type="checkbox" name="kodas" value="4"> 4
+    <input type="checkbox" name="kodas" value="5"> 5
+    <input type="checkbox" name="kodas" value="6"> 6 </br>
+    <input type="checkbox" name="kodas" value="7"> 7
+    <input type="checkbox" name="kodas" value="8"> 8
+    <input type="checkbox" name="kodas" value="9"> 9 </br>
+
+    {{!-- <input type="text" name="vardas"> --}}
+    <button type="submit">Spausti</button>
+</form> 
+</div>
+<div>
+{{#if atidaryta}}
+<div class="alert alert-success d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+  <div>
+    {{atidaryta}}
+  </div>
+</div>
+
+{{else}}
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <div>
+    {{uzdaryta}}
+  </div>
+</div>
+
+{{/if}}
+</div>
+
+</div>

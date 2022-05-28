@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+nav {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: aqua;
+    width: 80vw;
+    height: 50px;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.menu-list {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position:relative;
+}
+
+.submenu-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    position:absolute;
+    top: 40px;
+    display: none;
+    background-color: aquamarine;
+    width: 250px;
+}
+li:focus .submenu-list{
+    display: block;
+}
+li{
+    padding: 10px;
+}
+.submenu-list li a:hover{
+    text-decoration: none;
+}
+header{
+    position: sticky;
+    top:0px;
+}
