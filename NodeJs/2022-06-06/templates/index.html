@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užsakymas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        h1 {
+            margin-bottom: 5rem;
+        }
+
+        .pavadinimas {
+            font-weight: 800;
+        }
+
+        img {
+            height: 80px;
+        }
+
+        body {
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Užsakymo forma - pasirinkite prekę</h1>
+
+    <form class="row g-3" action="http://localhost:3000/api/items/new/" onsubmit="addTask(event)" method="POST">
+        <div class="d-inline-flex p-2 bd-highlight ">
+            <div class="form-check">
+                <img src="https://lovaplius.lt/wp-content/uploads/2017/12/Pilka-dvigule-lova-Bali-1-700x467.jpg" alt="">
+                <input class="form-check-input" type="radio" name="daiktas" value="lova" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    <p class="pavadinimas">Lova "Agnė"</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptas eligendi non, natus
+                        blanditiis, provident a, ipsum unde alias dolor velit aliquid? Fugiat ullam nesciunt nobis
+                        tempore
+                        adipisci quidem reiciendis?</p>
+                </label>
+            </div>
+            <div class="form-check">
+                <img src="https://www.varle.lt/static/uploads/products/195/vir/virtuvinis-stalas-new-style.jpg" alt="">
+                <input class="form-check-input" type="radio" name="daiktas" value="stalas" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    <p class="pavadinimas">Stalas "Dalius"</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptas eligendi non, natus
+                        blanditiis, provident a, ipsum unde alias dolor velit aliquid? Fugiat ullam nesciunt nobis
+                        tempore
+                        adipisci quidem reiciendis?</p>
+                </label>
+            </div>
+            <div class="form-check">
+                <img src="https://www.jysk.lt/media/catalog/product/cache/image/beff4985b56e3afdbeabfc89641a4582/1/2/126950c9df6949396747f192673a3ea8ac731e55___116789.jpg"
+                    alt="">
+                <input class="form-check-input" type="radio" name="daiktas" value="kede" id="flexRadioDefault3">
+                <label class="form-check-label" for="flexRadioDefault3">
+                    <p class="pavadinimas">Kėdė "Austėja"</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum atque aperiam quae quas! Earum iusto
+                        repudiandae ipsam quis libero nisi, quaerat quia, ipsa ratione sapiente magnam cumque iste
+                        voluptate
+                        doloremque.</p>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputName" class="form-label">Vardas</label>
+            <input type="text" class="form-control" id="inputName" name="name" placeholder="Vardenis"
+                aria-label="First name">
+        </div>
+        <div class="col-md-6">
+            <label for="inputLastName" class="form-label">Pavardė</label>
+            <input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="Pavardenis"
+                aria-label="Last name">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Adresas</label>
+            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Gatvė, namo nr.">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Miestas</label>
+            <input type="text" name="city" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPhone" class="form-label">Telefonas</label>
+            <input type="phone" name="phone" class="form-control" id="inputPhone">
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail" class="form-label">El. paštas</label>
+            <input type="email" name="email" class="form-control" id="inputEmail">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Užsakyti</button>
+        </div>
+    </form>
+
+    <script>
+
+        const fetchData = async (url, method = 'GET', body = {}) => {
+            const options = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            if (method != 'GET')
+                options.body = JSON.stringify(body)
+
+            const tasks = await fetch(url, options)
+
+            if (tasks.status === 200) {
+                if (method == 'GET')
+                    return await tasks.json()
+                else
+                    return true
+            } else {
+                return false
+            }
+        }
+
+        const addTask = async (event) => {
+            event.preventDefault()
+
+            const url = event.target.getAttribute('action')
+            const radio = event.target.querySelector('input[name="daiktas"]:checked').value
+            const name = event.target.querySelector('input[name="name"]').value
+            const lastName = event.target.querySelector('input[name="lastName"]').value
+            const address = event.target.querySelector('input[name="address"]').value
+            const city = event.target.querySelector('input[name="city"]').value
+            const phone = event.target.querySelector('input[name="phone"]').value
+            const email = event.target.querySelector('input[name="email"]').value
+
+            if (await fetchData(url, 'POST', {
+                item: radio,
+                name: name,
+                lastName: lastName,
+                address: address,
+                city: city,
+                phone: phone,
+                email: email
+            })) {
+                console.log('Užduotis sėkmingai patalpinta')
+            } else {
+                console.log('Nepavyko')
+            }
+        }
+
+    </script>
+</body>
+
+</html>
