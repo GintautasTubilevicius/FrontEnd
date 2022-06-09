@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/api/items/new', async (req, res) => {
+app.post('/new', async (req, res) => {
     try {
         await Items.create(req.body)
         res.status(200).end()
@@ -83,7 +83,7 @@ app.get('/admin', (req, res) => {
     }
 })
 
-app.get('/api/items/all', async (req, res) => {
+app.get('/all', async (req, res) => {
     try {
         const ordersList = await Items.find()
         res.status(200).json(ordersList)
@@ -91,6 +91,26 @@ app.get('/api/items/all', async (req, res) => {
         res.sendStatus(500)
     }
 })
+
+app.delete('/delete/:id', async (req, res) => {
+    const id = req.params.id
+    if(req.session.loggedin) {
+        await Items.findByIdAndDelete(id)
+        res.sendStatus(200)
+    } else {    
+        res.sendStatus(500)
+    }
+})  
+
+app.put('/update/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+        await Items.findByIdAndUpdate(id, req.body)
+        res.sendStatus(200)
+    } catch {
+        res.sendStatus(500)
+    }
+})  
 
 
 app.listen(3000)

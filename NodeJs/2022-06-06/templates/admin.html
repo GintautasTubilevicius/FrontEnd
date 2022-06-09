@@ -17,7 +17,7 @@
 
 <body>
     <h1>Užsakymų sąrašas</h1>
-    <div id="todolist"></div>
+    <div id="list"></div>
     <script>
         const fetchData = async (url, method = 'GET', body = {}) => {
             const options = {
@@ -41,11 +41,53 @@
                 return false
             }
         }
+        const uzbaigtaItem = async (e) => {
+            const element = e.target
+            const parent = element.parentNode.parentNode
+            const id = parent.dataset.id
+ 
+            if(await fetchData('http://localhost:3000/update/' + id, 'PUT', {
+                    status: 'Užbaigta'
+                })) {
+                ordersList('Būsena pakeista')
+            } else {
+                ordersList('Nepavyko pakeisti būsenos', 'danger')
+            }
+        }
 
-        const ordersList = async () => {
-            const orders = await fetchData('http://localhost:3000/api/items/all')
+        const atsauktaItem = async (e) => {
+            const element = e.target
+            const parent = element.parentNode.parentNode
+            const id = parent.dataset.id
+ 
+            if(await fetchData('http://localhost:3000/update/' + id, 'PUT', {
+                    status: 'Atšaukta'
+                })) {
+                ordersList('Būsena pakeista')
+            } else {
+                ordersList('Nepavyko pakeisti būsenos', 'danger')
+            }
+        }
+
+        const deleteItem = async (e) => {
+            const element = e.target
+            const parent = element.parentNode.parentNode
+            const id = parent.dataset.id
+
+            if(await fetchData('http://localhost:3000/delete/' + id, 'DELETE')) {
+                ordersList('Užsakymas sėkmingai ištrintas')
+            } else {
+                ordersList('Nepavyko ištrinti užsakymo', 'danger')
+            }
+        }
+
+        const ordersList = async (message = '', status = 'success') => {
+            const orders = await fetchData('http://localhost:3000/all')
 
             let html = ''
+
+            if(message)
+                html += `<div class="alert alert-${status}">${message}</div>`
            
             html += `<table class="table mt-3 align-middle">
                 <thead>
@@ -56,6 +98,7 @@
                     <th>Miestas</th>
                     <th>Telefonas</th>
                     <th>El.paštas</th>
+                    <th>Būsena</th>
                 </thead>
             <tbody>
                         `
@@ -69,12 +112,22 @@
                             <td class="order-name">${order.city}</td>
                             <td class="order-name">${order.phone}</td>
                             <td class="order-name">${order.email}</td>
+                            <td class="order-name">${order.status}</td>
+                            <td class="text-end">
+                                <button class="btn btn-success" onclick="uzbaigtaItem(event)">Užbaigtas</button>
+                            </td>
+                            <td class="text-end">
+                                <button class="btn btn-warning" onclick="atsauktaItem(event)">Atšauktas</button>
+                            </td>
+                            <td class="text-end">
+                                <button class="btn btn-danger" onclick="deleteItem(event)">Trinti</button>
+                            </td>
                         </tr>`
             })
 
             html += '</tbody></table>'
 
-            document.querySelector('#todolist').innerHTML = html
+            document.querySelector('#list').innerHTML = html
         }
 
         ordersList()

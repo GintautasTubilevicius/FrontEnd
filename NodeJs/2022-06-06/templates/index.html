@@ -27,7 +27,7 @@
 <body>
     <h1>Užsakymo forma - pasirinkite prekę</h1>
 
-    <form class="row g-3" action="http://localhost:3000/api/items/new/" onsubmit="addTask(event)" method="POST">
+    <form class="row g-3" action="http://localhost:3000/new" onsubmit="addTask(event)" method="POST">
         <div class="d-inline-flex p-2 bd-highlight ">
             <div class="form-check">
                 <img src="https://lovaplius.lt/wp-content/uploads/2017/12/Pilka-dvigule-lova-Bali-1-700x467.jpg" alt="">
@@ -139,7 +139,8 @@
                 address: address,
                 city: city,
                 phone: phone,
-                email: email
+                email: email,
+                status: 'Pateikta'
             })) {
                 console.log('Užduotis sėkmingai patalpinta')
             } else {

@@ -8,5 +8,6 @@ export default new mongoose.Schema({
     address: String,
     city: String,
     phone: String,
-    email: String
+    email: String,
+    status: String
 })
