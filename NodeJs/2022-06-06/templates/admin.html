@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užsakymų sąrašas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        body{
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Užsakymų sąrašas</h1>
+    <div id="todolist"></div>
+    <script>
+        const fetchData = async (url, method = 'GET', body = {}) => {
+            const options = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            if (method != 'GET')
+                options.body = JSON.stringify(body)
+
+            const tasks = await fetch(url, options)
+
+            if (tasks.status === 200) {
+                if (method == 'GET')
+                    return await tasks.json()
+                else
+                    return true
+            } else {
+                return false
+            }
+        }
+
+        const ordersList = async () => {
+            const orders = await fetchData('http://localhost:3000/api/items/all')
+
+            let html = ''
+           
+            html += `<table class="table mt-3 align-middle">
+                <thead>
+                    <th>Prekė</th>
+                    <th>Vardas</th>
+                    <th>Pavardė</th>
+                    <th>Adresas</th>
+                    <th>Miestas</th>
+                    <th>Telefonas</th>
+                    <th>El.paštas</th>
+                </thead>
+            <tbody>
+                        `
+
+            orders.map(order => {
+                html += `<tr data-id="${order._id}">
+                            <td class="order-name">${order.item}</td>
+                            <td class="order-name">${order.name}</td>
+                            <td class="order-name">${order.lastName}</td>
+                            <td class="order-name">${order.address}</td>
+                            <td class="order-name">${order.city}</td>
+                            <td class="order-name">${order.phone}</td>
+                            <td class="order-name">${order.email}</td>
+                        </tr>`
+            })
+
+            html += '</tbody></table>'
+
+            document.querySelector('#todolist').innerHTML = html
+        }
+
+        ordersList()
+    </script>
+</body>
+
+</html>

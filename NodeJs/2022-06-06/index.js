@@ -27,8 +27,7 @@ app.use(express.urlencoded({
 //Teisingi prisijungimo duomenys
 const credentials = {
     login: 'admin@bit.lt',
-    password: '1234',
-    user: 'Jonas'
+    password: '1234'
 }
 
 const __dirname = dirname( fileURLToPath(import.meta.url) )
@@ -43,9 +42,9 @@ app.post('/api/items/new', async (req, res) => {
     try {
         await Items.create(req.body)
         res.status(200).end()
-     } catch {
+    } catch {
          res.sendStatus(500)
-     }
+    }
 })
 
 
@@ -54,29 +53,44 @@ app.get('/login', (req, res) => {
 })
 
 
-app.post('/api/autenticate/new', async (req, res) => {
- 
-    try {
-        if(parseInt(Object.keys(req.body).length) > 0) {
-            if(
-                req.body.email != '' &&
-                req.body.password != '' &&
-                req.body.email === credentials.login &&
-                req.body.password === credentials.password
-            ) {
-                req.session.loggedin = true
-                req.session.user = credentials.name
-                console.log('Prisijungta')
-            } else {  
-                console.log('Klaida')
-            }
+app.post('/authenticate', (req, res) => {
+    if(parseInt(Object.keys(req.body).length) > 0) {
+        if(
+            req.body.email != '' &&
+            req.body.password != '' &&
+            req.body.email === credentials.login &&
+            req.body.password === credentials.password
+        ) {
+            req.session.loggedin = true
+            res.sendStatus(200)
+            return
+        } else {  
+            res.sendStatus(401)
         }
-        res.sendStatus(200)
-     } catch {
-        res.sendStatus(500)
-     }
+    } else {
+    res.sendStatus(202)
+    }
 })
-    
+
+app.get('/admin', (req, res) => {
+    const reject = () => {
+        res.sendFile(__dirname + '/templates/login.html')
+    }
+    if(!req.session.loggedin) {
+        return reject()
+    } else {
+        res.sendFile(__dirname + '/templates/admin.html')
+    }
+})
+
+app.get('/api/items/all', async (req, res) => {
+    try {
+        const ordersList = await Items.find()
+        res.status(200).json(ordersList)
+    } catch {
+        res.sendStatus(500)
+    }
+})
 
 
 app.listen(3000)
