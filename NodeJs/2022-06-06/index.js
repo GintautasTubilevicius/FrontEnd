@@ -73,13 +73,10 @@ app.post('/authenticate', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-    const reject = () => {
-        res.sendFile(__dirname + '/templates/login.html')
-    }
-    if(!req.session.loggedin) {
-        return reject()
-    } else {
+    if(req.session.loggedin) {
         res.sendFile(__dirname + '/templates/admin.html')
+    } else {
+        res.sendFile(__dirname + '/templates/login.html')
     }
 })
 
