@@ -12,12 +12,15 @@
         h1 {
             margin-bottom: 5rem;
         }
+
         .pavadinimas {
             font-weight: 800;
         }
+
         img {
             height: 80px;
         }
+
         body {
             padding: 30px;
         }
@@ -26,7 +29,7 @@
 
 <body>
     <h1>Užsakymo forma - pasirinkite prekę</h1>
-
+    <div class="alert alert-success" role="alert" style="display: none"></div>
     <form class="row g-3" action="http://localhost:3000/new" onsubmit="addTask(event)" method="POST">
         <div class="d-inline-flex p-2 bd-highlight ">
             <div class="form-check">
@@ -132,7 +135,7 @@
             const phone = event.target.querySelector('input[name="phone"]').value
             const email = event.target.querySelector('input[name="email"]').value
 
-            if (await fetchData(url, 'POST', {
+            await fetchData(url, 'POST', {
                 item: radio,
                 name: name,
                 lastName: lastName,
@@ -141,12 +144,13 @@
                 phone: phone,
                 email: email,
                 status: 'Pateikta'
-            })) {
-                console.log('Užduotis sėkmingai patalpinta')
-            } else {
-                console.log('Nepavyko')
-            }
+            })
+            if (addTask) {
+            document.querySelector('div[role="alert"]').textContent = 'Užsakymas sėkmingai pateiktas'
+            document.querySelector('div[role="alert"]').style.display = 'block'
         }
+        }
+        
 
     </script>
 </body>
