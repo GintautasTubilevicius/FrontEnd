@@ -12,11 +12,16 @@
         body{
             padding: 30px;
         }
+        h1 {
+            margin-bottom: 50px;
+        }
     </style>
 </head>
 
 <body>
+    
     <h1>Užsakymų sąrašas</h1>
+
     <div id="list"></div>
     <script>
         const fetchData = async (url, method = 'GET', body = {}) => {
@@ -82,6 +87,7 @@
         }
 
         const ordersList = async (message = '', status = 'success') => {
+            let busena = ''
             const orders = await fetchData('http://localhost:3000/all')
 
             let html = ''
@@ -91,6 +97,7 @@
            
             html += `<table class="table mt-3 align-middle">
                 <thead>
+                    <th>Nr</th>
                     <th>Prekė</th>
                     <th>Vardas</th>
                     <th>Pavardė</th>
@@ -99,12 +106,21 @@
                     <th>Telefonas</th>
                     <th>El.paštas</th>
                     <th>Būsena</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </thead>
             <tbody>
                         `
 
-            orders.map(order => {
-                html += `<tr data-id="${order._id}">
+            orders.map((order, i) => {
+
+                if (order.status === 'Užbaigta') busena = 'success'
+                else if (order.status === 'Atšaukta') busena = 'warning'
+                else busena = 'light'
+
+                html += `<tr class="table-${busena}" data-id="${order._id} ">
+                            <td class="order-name">${i+1}</td>
                             <td class="order-name">${order.item}</td>
                             <td class="order-name">${order.name}</td>
                             <td class="order-name">${order.lastName}</td>
@@ -113,13 +129,13 @@
                             <td class="order-name">${order.phone}</td>
                             <td class="order-name">${order.email}</td>
                             <td class="order-name">${order.status}</td>
-                            <td class="text-end">
+                            <td class="order-name text-end">
                                 <button class="btn btn-success" onclick="uzbaigtaItem(event)">Užbaigtas</button>
                             </td>
-                            <td class="text-end">
+                            <td class="order-name text-end">
                                 <button class="btn btn-warning" onclick="atsauktaItem(event)">Atšauktas</button>
                             </td>
-                            <td class="text-end">
+                            <td class="order-name text-end">
                                 <button class="btn btn-danger" onclick="deleteItem(event)">Trinti</button>
                             </td>
                         </tr>`
