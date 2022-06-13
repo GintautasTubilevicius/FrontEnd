@@ -1,5 +1,6 @@
 import express from 'express'
 import { Items } from './database/connection.js'
+import { Daiktai } from './database/connection.js'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import session from 'express-session'
@@ -37,7 +38,6 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/templates/index.html')
 })
 
-
 app.post('/new', async (req, res) => {
     try {
         await Items.create(req.body)
@@ -51,7 +51,6 @@ app.post('/new', async (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/templates/login.html')
 })
-
 
 app.post('/authenticate', (req, res) => {
     if(parseInt(Object.keys(req.body).length) > 0) {
@@ -108,6 +107,52 @@ app.put('/update/:id', async (req, res) => {
         res.sendStatus(500)
     }
 })  
+
+app.get('/prekes', (req, res) => {
+    res.sendFile(__dirname + '/templates/prekes.html')
+})
+
+app.get('/prekes-all', async (req, res) => {
+    try {
+        const prekesList = await Daiktai.find()
+        res.status(200).json(prekesList)
+    } catch {
+        res.sendStatus(500)
+    }
+})
+
+app.post('/prekes-new', async (req, res) => {
+    try {
+        await Daiktai.create(req.body)
+        res.status(200).end()
+    } catch {
+         res.sendStatus(500)
+    }
+})
+
+app.delete('/prekes-delete/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+        await Daiktai.findByIdAndDelete(id)
+        res.sendStatus(200)
+    } catch {    
+        res.sendStatus(500)
+    }
+})  
+
+app.put('/prekes-update/:id', async (req, res) => {
+    const id = req.params.id
+    console.log(req.body)
+    try {
+        await Daiktai.findByIdAndUpdate(id, req.body)
+        res.sendStatus(200)
+    } catch {
+        res.sendStatus(500)
+    }
+})  
+
+
+
 
 
 app.listen(3000)
