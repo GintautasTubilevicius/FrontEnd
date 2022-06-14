@@ -15,6 +15,10 @@
         h1 {
             margin-bottom: 50px;
         }
+        a {
+            font-weight: 800;
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -23,6 +27,8 @@
     <h1>Užsakymų sąrašas</h1>
 
     <div id="list"></div>
+
+    <a href="http://localhost:3000/prekes">Tvarkyti ar pridėti sandėlio prekes</a>
     <script>
         const fetchData = async (url, method = 'GET', body = {}) => {
             const options = {
