@@ -18,6 +18,10 @@
         a {
             font-weight: 800;
             font-size: 20px;
+            text-decoration: none;
+        }
+        #list{
+            margin-bottom: 50px;
         }
     </style>
 </head>
@@ -28,7 +32,7 @@
 
     <div id="list"></div>
 
-    <a href="http://localhost:3000/prekes">Tvarkyti ar pridėti sandėlio prekes</a>
+    <a href="http://localhost:3000/eshop/prekes">Tvarkyti ar pridėti sandėlio prekes</a>
     <script>
         const fetchData = async (url, method = 'GET', body = {}) => {
             const options = {
@@ -57,7 +61,7 @@
             const parent = element.parentNode.parentNode
             const id = parent.dataset.id
  
-            if(await fetchData('http://localhost:3000/update/' + id, 'PUT', {
+            if(await fetchData('http://localhost:3000/eshop/update/' + id, 'PUT', {
                     status: 'Užbaigta'
                 })) {
                 ordersList('Būsena pakeista')
@@ -71,7 +75,7 @@
             const parent = element.parentNode.parentNode
             const id = parent.dataset.id
  
-            if(await fetchData('http://localhost:3000/update/' + id, 'PUT', {
+            if(await fetchData('http://localhost:3000/eshop/update/' + id, 'PUT', {
                     status: 'Atšaukta'
                 })) {
                 ordersList('Būsena pakeista')
@@ -85,7 +89,7 @@
             const parent = element.parentNode.parentNode
             const id = parent.dataset.id
 
-            if(await fetchData('http://localhost:3000/delete/' + id, 'DELETE')) {
+            if(await fetchData('http://localhost:3000/eshop/delete/' + id, 'DELETE')) {
                 ordersList('Užsakymas sėkmingai ištrintas')
             } else {
                 ordersList('Nepavyko ištrinti užsakymo', 'danger')
@@ -94,7 +98,7 @@
 
         const ordersList = async (message = '', status = 'success') => {
             let busena = ''
-            const orders = await fetchData('http://localhost:3000/all')
+            const orders = await fetchData('http://localhost:3000/eshop/all')
 
             let html = ''
 

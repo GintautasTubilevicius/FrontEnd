@@ -10,7 +10,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style>
         body {
-            padding: 30px;
+            padding: 80px;
         }
         h1 {
             margin-bottom: 50px;
@@ -20,6 +20,9 @@
         }
         h3 {
             margin-top: 60px;
+        }
+        form{
+            max-width: 40%;
         }
     </style>
 </head>
@@ -68,7 +71,7 @@
             if (element.dataset.update) {
                 const prekesReiksme = paimamPreke.querySelector('input').value
                 const aprasymoReiksme = paimamAprasyma.querySelector('input').value
-                if (await fetchData('http://localhost:3000/prekes-update/' + id, 'PUT', {
+                if (await fetchData('http://localhost:3000/eshop/prekes/update/' + id, 'PUT', {
                     item: prekesReiksme,
                     description: aprasymoReiksme
                 })) {
@@ -91,7 +94,7 @@
             const parent = element.parentNode.parentNode
             const id = parent.dataset.id
 
-            if (await fetchData('http://localhost:3000/prekes-delete/' + id, 'DELETE')) {
+            if (await fetchData('http://localhost:3000/eshop/prekes/delete/' + id, 'DELETE')) {
                 prekiuList('Prekė ištrinta')
             } else {
                 prekiuList('Nepavyko ištrinti prekės', 'danger')
@@ -104,7 +107,7 @@
             const url = event.target.getAttribute('action')
             const photo = event.target.querySelector('input[name="photo"]').value
             const item = event.target.querySelector('input[name="item"]').value
-            const description = event.target.querySelector('input[name="description"]').value
+            const description = event.target.querySelector('textarea[name="description"]').value
 
             if (await fetchData(url, 'POST', {
                 photo: photo,
@@ -119,7 +122,7 @@
 
         const prekiuList = async (message = '', status = 'success') => {
             let busena = ''
-            const prekes = await fetchData('http://localhost:3000/prekes-all')
+            const prekes = await fetchData('http://localhost:3000/eshop/prekes/all')
 
             let html = ''
 
@@ -159,7 +162,7 @@
 
             html += `
             <h3> Norėdami įkelti naują prekę, užpildykite formą </h3>
-            <form action="http://localhost:3000/prekes-new/" onsubmit="addPreke(event)">
+            <form action="http://localhost:3000/eshop/prekes/new/" onsubmit="addPreke(event)">
                 <div class="mb-3">
                     <label for="foto" class="form-label">Nuotrauka</label>
                     <input type="text" name="photo" class="form-control" id="foto">
@@ -171,7 +174,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="aprasymas" class="form-label">Aprašymas</label>
-                    <input type="text" name="description" class="form-control" id="aprasymas">
+                    <textarea type="text" name="description" class="form-control" id="aprasymas"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Pridėti naują prekę</button>
             </form>
