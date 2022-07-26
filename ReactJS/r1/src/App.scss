@@ -26,54 +26,65 @@ button {
   overflow: hidden;
   cursor: pointer;
   margin: 5px;
+
   &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 0;
-      background-color: #212121;
-      z-index: -1;
-      transition: all 250ms
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #212121;
+    z-index: -1;
+    transition: all 250ms
   }
+
   &:hover {
-      color: #e8e8e8;
+    color: #e8e8e8;
   }
+
   &:hover::before {
-      width: 100%;
+    width: 100%;
   }
+
   &.red {
-      background: crimson;
-      color: white;
-      &:before {
-          background-color: white;
-      }
-      &:hover {
-          color: crimson;
-      }
-  }
-  &.blue {
-      background: blue;
-      color: white;
-      &:before {
-          background-color: white;
-      }
-      &:hover {
-          color: blue;
-      }
-  }
-  &.green {
-    background: green;
+    background: crimson;
     color: white;
+
     &:before {
-        background-color: white;
+      background-color: white;
     }
 
     &:hover {
-        color: green;
+      color: crimson;
     }
-}
+  }
+
+  &.blue {
+    background: blue;
+    color: white;
+
+    &:before {
+      background-color: white;
+    }
+
+    &:hover {
+      color: blue;
+    }
+  }
+
+  &.green {
+    background: green;
+    color: white;
+
+    &:before {
+      background-color: white;
+    }
+
+    &:hover {
+      color: green;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -159,6 +170,7 @@ h1.red {
   border: 6px solid gold;
   margin: 5px;
 }
+
 .circleNumbers {
   display: flex;
   justify-content: center;
@@ -180,6 +192,7 @@ h1.red {
 .nice-buttons-bin {
   width: 100%;
 }
+
 .nice-square {
   width: 80px;
   height: 80px;
