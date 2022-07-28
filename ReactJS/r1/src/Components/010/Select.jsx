@@ -13,7 +13,7 @@ function Select() {
 
     const [select, setSelect] = useState(5);
     const [color, setColor] = useState(null);
-    const [colorInput, setColorInput] = useState('#000000');
+    const [colorInput, setColorInput] = useState('#ffffff');
     const [count, setCount] = useState(0);
 
 
