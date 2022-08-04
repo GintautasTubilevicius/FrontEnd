@@ -3,10 +3,11 @@ import './App.scss';
 import Create from './Components/Create';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { create, destroy, edit, read } from './Functions/localStorage';
+import { create, destroy, edit, rand, read } from './Functions/localStorage';
 import DataContext from './Components/DataContext';
 import List from './Components/List';
 import Edit from './Components/Edit';
+import Messages from './Components/Messages';
 
 const localStorageKey = 'zoo';
 
@@ -19,6 +20,8 @@ function App() {
   const [EditData, setEditData] = useState(null);
   const [modalData, setModalData] = useState(null);
 
+  const [messages, setMessages] = useState([]);
+
 
   useEffect(() => {
     setAnimals(read(localStorageKey));
@@ -30,6 +33,7 @@ function App() {
     }
     create(localStorageKey, createData);
     setLastUpdate(Date.now());
+    msg('success', 'All good!');
   }, [createData]);
 
   useEffect(() => {
@@ -38,6 +42,7 @@ function App() {
     }
     destroy(localStorageKey, deleteData.id);
     setLastUpdate(Date.now());
+    msg('danger', 'Animal gone!');
   }, [deleteData]);
 
   useEffect(() => {
@@ -46,16 +51,27 @@ function App() {
     }
     edit(localStorageKey, EditData, EditData.id);
     setLastUpdate(Date.now());
+    msg('success', 'Animal was edited!');
   }, [EditData]);
+
+  const msg = (type, text) => {
+    const mes = { type, text, id: rand(100000, 9999999) }
+    setTimeout(() => {
+      setMessages(m => m.filter(me => me.id !== mes.id))
+    }, 4000);
+    setMessages(m => [...m, mes])
+  }
 
   return (
     <DataContext.Provider value={{
       setCreateData,
       animals,
       setDeleteData,
-      modalData, 
+      modalData,
       setModalData,
-      setEditData
+      setEditData,
+      messages,
+      msg
     }}>
       <div className="container">
         <div className="row">
@@ -67,7 +83,8 @@ function App() {
           </div>
         </div>
       </div>
-      <Edit/>
+      <Edit />
+      <Messages></Messages>
     </DataContext.Provider>
   );
 }

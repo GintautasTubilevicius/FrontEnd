@@ -4,7 +4,7 @@ import DataContext from "./DataContext";
 
 function Edit() {
 
-    const { modalData, setModalData, setEditData } = useContext(DataContext);
+    const { modalData, setModalData, setEditData, msg } = useContext(DataContext);
     const [type, setType] = useState('');
     const [weight, setWeight] = useState('');
 
@@ -18,6 +18,18 @@ function Edit() {
     }, [modalData]);
 
     const clickSave = () => {
+        let error = false;
+        if (type === '') {
+            msg('danger', 'Please enter animal type')
+            error = true;
+        }
+        if (weight === '') {
+            msg('danger', 'Please enter animal weight')
+            error = true;
+        }
+        if (error) {
+            return;
+        }
         setEditData({type, weight, id: modalData.id});
         setModalData(null);
     }
