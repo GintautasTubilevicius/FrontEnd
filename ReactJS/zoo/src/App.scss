@@ -4,18 +4,22 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+
         .content {
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
             h3 {
                 margin: 0 12px 0 0;
                 color: cornflowerblue;
             }
+
             i {
                 color: gray;
             }
         }
+
         .control {
             display: flex;
             justify-content: flex-start;
@@ -28,8 +32,19 @@
     display: block;
     background-color: #cec7c090;
 }
+
 .messages-bin {
     position: fixed;
+    width: 40%;
     top: 50px;
     left: 50px;
+    text-align: center;
+    .alert-danger, .alert-success {
+        opacity: 0.8;
+    }
+}
+
+.h1 {
+    text-align: center;
+    margin: 30px;
 }

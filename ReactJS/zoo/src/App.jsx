@@ -58,34 +58,37 @@ function App() {
     const mes = { type, text, id: rand(100000, 9999999) }
     setTimeout(() => {
       setMessages(m => m.filter(me => me.id !== mes.id))
-    }, 4000);
+    }, 3000);
     setMessages(m => [...m, mes])
   }
 
   return (
-    <DataContext.Provider value={{
-      setCreateData,
-      animals,
-      setDeleteData,
-      modalData,
-      setModalData,
-      setEditData,
-      messages,
-      msg
-    }}>
-      <div className="container">
-        <div className="row">
-          <div className="col-5">
-            <Create />
-          </div>
-          <div className="col-7">
-            <List />
+    <>
+      <p className="h1">Animal List</p>
+      <DataContext.Provider value={{
+        setCreateData,
+        animals,
+        setDeleteData,
+        modalData,
+        setModalData,
+        setEditData,
+        messages,
+        msg
+      }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-5">
+              <Create />
+            </div>
+            <div className="col-7">
+              <List />
+            </div>
           </div>
         </div>
-      </div>
-      <Edit />
-      <Messages></Messages>
-    </DataContext.Provider>
+        <Edit />
+        <Messages></Messages>
+      </DataContext.Provider>
+    </>
   );
 }
 
