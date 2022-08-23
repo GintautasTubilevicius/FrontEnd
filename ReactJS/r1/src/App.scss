@@ -162,6 +162,16 @@ h1.red {
     align-items: center;
     width: 70%;
     flex-wrap: wrap;
+    a {
+        display: inline-block;
+        color:crimson;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: all 0.3s;
+        &:hover {
+            color:#a4757e;
+        }
+    }
 }
 
 .sc {
