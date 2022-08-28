@@ -1,4 +1,4 @@
 ## Knygynas sample 
 
-![knygynas](ttps://github.com/GintautasTubilevicius/FrontEnd/blob/master/knygynas/Knygynas.png)
+![knygynas](https://github.com/GintautasTubilevicius/FrontEnd/blob/master/knygynas/Knygynas.png)
 
