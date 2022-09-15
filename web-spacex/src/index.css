@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply h-14 bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r;
+}
+
+/* img {
+  max-width: 100%;
+  width: 100%;
+} */
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.btn {
+  @apply bg-sky-500 hover:bg-sky-700 px-8 py-2 rounded-full;
+}
+
+.heading {
+  @apply text-white font-bold text-2xl md:text-3xl xl:text-4xl;
+}
+
+p {
+  @apply text-sm;
+  line-height: 1.8;
+}
+.showcase {
+  background: url("./bailando.jpg") no-repeat center/cover;
+  height: 100vh;
+}
+
+.showcase .overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100vh;
+  padding: 8rem 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.articles {
+  @apply bg-stone-500 p-5 rounded-lg shadow shadow-zinc-800 text-white text-sm ;
+  min-height: 375px;
+  
+}
+
+img{
+  @apply w-auto
+ }
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.spinner article {
+  width: 5rem;
+  height: 5rem;
+  background-color: transparent;
+  border: 8px solid #98e2cb21;
+  border-top-color: #10b581;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+nav {
+  @apply absolute bg-stone-900 shadow shadow-cyan-50 w-full left-0 right-0 p-5 z-50 transition-all duration-200 lg:relative lg:bg-transparent lg:shadow-none lg:p-0 lg:z-auto lg:w-auto;
+  top: -100vh;
+}
+
+nav.open {
+  top: 6rem;
+}
+
+@media (min-width: 640px) {
+  .articles {
+     min-height: 310px;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav {
+    top: 0;
+  }
+
+  nav.open {
+    top: 0;
+  }
+}
+
+@media (min-width: 1536px) {
+      .articles {
+        min-height: 375px;
+        padding: 5px;
+     }
+     img{
+      @apply w-auto
+     }
+    
+}
+
+nav ul {
+  @apply lg:flex lg:items-center lg:justify-center lg:gap-3;
+}
+
+nav ul li {
+  @apply mb-3 lg:mb-0;
+}
+
+.work-sans {
+  font-family: 'Work Sans', sans-serif;
+}
+      
+#menu-toggle:checked + #menu {
+  display: block;
+}
+
+.hover\:grow {
+  transition: all 0.3s;
+  transform: scale(1);
+}
+
+.hover\:grow:hover {
+  transform: scale(1.07);
+}
+.testas {
+  width: 100px;
+}
+
+
